@@ -105,6 +105,16 @@ header .content form button.search svg {
 
   header .content form input.search {
     height: 29px;
+    background-color: var(--red);
+    color: var(--white);
+    border: 1px solid var(--red);
+    box-shadow: none;
+  }
+
+  header .content form input.search:focus {
+    color: var(--black);
+    background-color: var(--white);
+    border: 0;
   }
 
   header .content form button.search {
