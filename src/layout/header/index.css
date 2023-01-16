@@ -1,6 +1,6 @@
 header {
-  width: 100%;
-  margin: var(--lg-margin) 0 var(--lg-margin) 0;
+  width: calc(100% - (var(--sm-padding) * 2));
+  padding: var(--lg-padding) var(--sm-padding) var(--lg-padding) var(--sm-padding);
   display: flex;
   justify-content: center;
 }
@@ -11,13 +11,26 @@ header .content {
   justify-content: space-between;
 }
 
-header .logo {
+header .content .logo {
   width: 150px;
   display: flex;
   margin-right: var(--lg-margin);
 }
 
-header .logo .country {
+header .content .logo svg {
+  pointer-events: none;
+  display: block;
+}
+
+header .content .logo svg path.youtube-play {
+  fill: var(--white);
+}
+
+header .content .logo svg path.youtube-body {
+  fill: var(--red);
+}
+
+header .content .logo .country {
   color: var(--grey);
   font-size: var(--sm-font);
 }
@@ -41,8 +54,67 @@ header .content form input.search:focus {
 }
 
 header .content form button.search {
+  height: 30px;
   width: 75px;
   background-color: var(--offwhite);
   border: 1px solid var(--light-grey);
   border-left: 0;
+}
+
+header .content form button.search svg {
+  color: var(--grey);
+}
+
+@media (max-width: 720px) {
+  header {
+    background-color: var(--red);
+  }
+
+  header .content {
+    width: 100%;
+  }
+
+  header .content .logo {
+    width: 50px;
+  }
+
+  header .content .logo svg {
+    position: absolute;
+    width: 150px;
+  }
+
+  header .content .logo svg path.youtube-play {
+    fill: var(--red);
+  }
+
+  header .content .logo svg path.youtube-body {
+    fill: var(--white);
+  }
+
+  header .content .logo svg g.youtube-paths {
+    display: none;
+  }
+
+  header .content .logo .country {
+    display: none;
+  }
+
+  header .content form {
+    width: 100%;
+  }
+
+  header .content form input.search {
+    height: 29px;
+  }
+
+  header .content form button.search {
+    height: 33px;
+    background: transparent;
+    border: 0;
+    width: 35px;
+  }
+
+  header .content form button.search svg {
+    color: var(--white);
+  }
 }
