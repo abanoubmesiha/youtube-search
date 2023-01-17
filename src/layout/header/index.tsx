@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import getSearchResult from '../../actions/searchResultActions';
+import searchResultStore from '../../stores/searchResultStore';
 import './index.css';
 
 export default function Header() {
+  const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    if (searchResultStore.getSearchResult()?.items?.length === 0) getSearchResult(searchValue);
+  }, []);
+
   return (
     <header>
       <div className="content">
@@ -28,9 +36,13 @@ export default function Header() {
           </svg>
           <span className="country">EG</span>
         </div>
-        <form>
-          <input className="search" />
-          <button type="submit" className="search">
+        <form onSubmit={(e) => e.preventDefault()}>
+          <input
+            className="search"
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={((e) => { if (e.code === 'Enter') { getSearchResult(searchValue); } })}
+          />
+          <button type="button" className="search" onClick={() => getSearchResult(searchValue)}>
             <AiOutlineSearch size={20} />
           </button>
         </form>

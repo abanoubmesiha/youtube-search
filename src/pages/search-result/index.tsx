@@ -27,7 +27,7 @@ function SearchResult() {
     );
   } if (searchResult?.error?.code) {
     return (
-      <section className="search-results loading">
+      <section className="search-results">
         {searchResult.error.message}
       </section>
     );
