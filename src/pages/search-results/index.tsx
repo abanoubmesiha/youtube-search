@@ -14,7 +14,7 @@ function SearchResults() {
 
   useEffect(() => {
     searchResultsStore.addChangeListener(onChange);
-    if (searchResultsStore.getSearchResults()?.length === 0) getSearchResults('abc');
+    if (searchResultsStore.getSearchResults()?.length === 0) getSearchResults('spongebob');
     return () => searchResultsStore.removeChangeListener(onChange);
   }, []);
 
@@ -22,7 +22,7 @@ function SearchResults() {
     <section className="search-results">
       <div className="content">
         {
-          searchResults?.map(
+          searchResults.map(
             (item: SearchResultItem) => <VideoCard key={item.id.videoId} item={item} />,
           )
         }

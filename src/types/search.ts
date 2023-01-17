@@ -5,19 +5,24 @@ export type SearchParams = {
     q: string
 }
 
+export type Image = {
+    height: number
+    url: string,
+    width: number,
+}
+
 export type SearchResultItem = {
     id: {kind: string, videoId: string},
     snippet: {
-        title: string,
+        channelTitle: string,
         description: string,
-        thumbnails: {
-            default: {
-                url: string,
-                width: number,
-                height: number
-            }
-        }
         publishedAt: string,
         publishTime: string,
+        thumbnails: {
+            default: Image,
+            high: Image,
+            medium: Image,
+        }
+        title: string,
     }
 }
