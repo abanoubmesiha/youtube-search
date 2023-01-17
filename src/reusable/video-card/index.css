@@ -1,0 +1,54 @@
+.video-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--lg-margin);
+}
+
+.video-card img {
+  min-height: 200px;
+  min-width: 300px;
+}
+
+.video-card .details {
+  height: calc(200px - (var(--sm-padding) *2));
+  padding: var(--sm-padding) var(--lg-padding) var(--sm-padding) var(--lg-padding);
+}
+
+.video-card .details .channel-title,
+.video-card .details .views,
+.video-card .details .since {
+  color: var(--grey);
+}
+
+.video-card .details .seperator {
+  border: 2px solid var(--grey);
+  border-radius: 100%;
+  width: 1px;
+  height: 1px;
+  display: inline-block;
+  background: var(--grey);
+  margin: 3px;
+  color: var(--grey);
+}
+
+.video-card .details .description {
+  margin-top: var(--md-margin);
+}
+
+@media (max-width: 720px) {
+  .video-card img {
+    min-height: 100px;
+    min-width: 150px;
+    max-height: 100px;
+    max-width: 150px;
+  }
+
+  .video-card .details {
+    height: calc(100px - (var(--sm-padding) *2));
+    padding: var(--sm-padding) var(--lg-padding) var(--sm-padding) var(--lg-padding);
+  }
+
+  .video-card .details .description {
+    display: none;
+  }
+}
