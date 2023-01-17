@@ -1,11 +1,11 @@
 import dispatcher from './appDispatcher';
 import actionTypes from './actionTypes';
+import api from '../apis';
 
-const data = [1, 2, 3];
-
-export default function getSearchResults() {
+export default async function getSearchResults(q: string) {
+  const res = await api.search.get({ part: 'snippet', maxResults: 5, q });
   dispatcher.dispatch({
     actionTypes: actionTypes.GET_SEARCH_RESULTS,
-    payload: data,
+    searchResults: res.items,
   });
 }

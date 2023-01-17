@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import searchResultsStore from '../../stores/searchResultsStore';
 import getSearchResults from '../../actions/searchResultsActions';
+import { SearchResultItem } from '../../types/search';
 
 function SearchResults() {
   const [searchResults, setSearchResults] = useState(searchResultsStore.getSearchResults());
@@ -11,11 +12,12 @@ function SearchResults() {
 
   useEffect(() => {
     searchResultsStore.addChangeListener(onChange);
-    if (searchResultsStore.getSearchResults()?.length === 0) getSearchResults();
+    if (searchResultsStore.getSearchResults()?.length === 0) getSearchResults('abc');
     return () => searchResultsStore.removeChangeListener(onChange);
   }, []);
-  console.log(searchResults);
-  return <h1>search results</h1>;
+
+  return searchResults
+    ?.map((item: SearchResultItem) => <div key={item.id.videoId}>{item.id.videoId}</div>);
 }
 
 export default SearchResults;

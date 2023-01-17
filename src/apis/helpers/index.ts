@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-class HttpHelpers {
+class HttpHelper {
   apiBaseUrl: string | undefined;
 
   baseAxios: AxiosInstance;
@@ -17,4 +17,4 @@ class HttpHelpers {
   }
 }
 
-export default new HttpHelpers();
+export default new HttpHelper();
