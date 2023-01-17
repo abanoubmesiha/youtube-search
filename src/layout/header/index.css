@@ -1,0 +1,130 @@
+header {
+  width: calc(100% - (var(--sm-padding) * 2));
+  padding: var(--lg-padding) var(--sm-padding) var(--lg-padding) var(--sm-padding);
+  display: flex;
+  justify-content: center;
+}
+
+header .content {
+  width: var(--md-screen);
+  display: flex;
+  justify-content: space-between;
+}
+
+header .content .logo {
+  width: 150px;
+  display: flex;
+  margin-right: var(--lg-margin);
+}
+
+header .content .logo svg {
+  pointer-events: none;
+  display: block;
+}
+
+header .content .logo svg path.youtube-play {
+  fill: var(--white);
+}
+
+header .content .logo svg path.youtube-body {
+  fill: var(--red);
+}
+
+header .content .logo .country {
+  color: var(--grey);
+  font-size: var(--sm-font);
+}
+
+header .content form {
+  display: flex;
+  align-items: center;
+  width: 500px;
+}
+
+header .content form input.search {
+  height: 25px;
+  flex-grow: 1;
+  box-shadow: 0 0 0.5px 0.5px var(--light-grey);
+  border: 1px solid var(--light-grey);
+  outline: 0;
+}
+
+header .content form input.search:focus {
+  border: 1px solid var(--dark-blue);
+}
+
+header .content form button.search {
+  height: 30px;
+  width: 75px;
+  background-color: var(--offwhite);
+  border: 1px solid var(--light-grey);
+  border-left: 0;
+}
+
+header .content form button.search svg {
+  color: var(--grey);
+}
+
+@media (max-width: 720px) {
+  header {
+    background-color: var(--red);
+  }
+
+  header .content {
+    width: 100%;
+  }
+
+  header .content .logo {
+    width: 50px;
+  }
+
+  header .content .logo svg {
+    position: absolute;
+    width: 150px;
+  }
+
+  header .content .logo svg path.youtube-play {
+    fill: var(--red);
+  }
+
+  header .content .logo svg path.youtube-body {
+    fill: var(--white);
+  }
+
+  header .content .logo svg g.youtube-paths {
+    display: none;
+  }
+
+  header .content .logo .country {
+    display: none;
+  }
+
+  header .content form {
+    width: 100%;
+  }
+
+  header .content form input.search {
+    height: 29px;
+    background-color: var(--red);
+    color: var(--white);
+    border: 1px solid var(--red);
+    box-shadow: none;
+  }
+
+  header .content form input.search:focus {
+    color: var(--black);
+    background-color: var(--white);
+    border: 0;
+  }
+
+  header .content form button.search {
+    height: 33px;
+    background: transparent;
+    border: 0;
+    width: 35px;
+  }
+
+  header .content form button.search svg {
+    color: var(--white);
+  }
+}
