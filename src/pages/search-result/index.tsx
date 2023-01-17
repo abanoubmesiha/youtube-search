@@ -8,6 +8,7 @@ import './index.css';
 
 function SearchResult() {
   const [searchResult, setSearchResult] = useState(searchResultStore.getSearchResult());
+  const [isWebFiltersOpen, setIsWebFiltersOpen] = useState(false);
 
   function onChange() {
     setSearchResult(searchResultStore.getSearchResult());
@@ -30,13 +31,17 @@ function SearchResult() {
             {' '}
             filtered results
           </p>
-          <span className="filter-btn">
+          <button
+            type="button"
+            className="filter-btn"
+            onClick={() => setIsWebFiltersOpen((prev) => !prev)}
+          >
             <BiFilter size={25} />
             FILTER
-          </span>
+          </button>
         </div>
         <hr />
-        <div className="web-filter-options">
+        <div className={`web-filter-options ${isWebFiltersOpen ? 'show' : 'hide'}`}>
           <span className="option">
             <p className="type">TYPE</p>
             <hr />

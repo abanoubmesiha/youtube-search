@@ -20,6 +20,9 @@ section.search-results .content .filter-bar .filter-btn {
   align-items: center;
   justify-content: space-between;
   color: var(--grey);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 section.search-results .content hr {
@@ -29,6 +32,21 @@ section.search-results .content hr {
 section.search-results .content .web-filter-options {
   display: flex;
   font-size: var(--md-font);
+  transition: all 1s;
+  height: 120px;
+}
+
+section.search-results .content .web-filter-options.hide {
+  height: 0;
+}
+
+section.search-results .content .web-filter-options + hr {
+  transition: all 2s;
+}
+
+section.search-results .content .web-filter-options.hide + hr {
+  margin: 0;
+  border: 0;
 }
 
 section.search-results .content .web-filter-options .option {
