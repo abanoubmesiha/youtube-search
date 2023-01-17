@@ -1,11 +1,9 @@
 import React from 'react';
-import Header from './layout/header';
 import './assets/styles/index.css';
+import MainRouter from './router';
 
 function App() {
-  return (
-    <Header />
-  );
+  return <MainRouter />;
 }
 
 export default App;
