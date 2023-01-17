@@ -1,0 +1,10 @@
+section.search-results {
+  width: calc(100% - (var(--sm-padding) * 2));
+  padding: var(--lg-padding) var(--sm-padding) var(--lg-padding) var(--sm-padding);
+  display: flex;
+  justify-content: center;
+}
+
+section.search-results .content {
+  width: var(--md-screen);
+}
