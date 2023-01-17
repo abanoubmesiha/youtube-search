@@ -3,7 +3,7 @@ import dispatcher from '../actions/appDispatcher';
 import actionTypes from '../actions/actionTypes';
 
 const CHANGE_EVENT = 'change';
-let searchResultsVar: any[] = [];
+let searchResults: any[] = [];
 
 class SearchResultsStore extends EventEmitter {
   addChangeListener(callback: any) {
@@ -20,7 +20,7 @@ class SearchResultsStore extends EventEmitter {
 
   // eslint-disable-next-line class-methods-use-this
   getSearchResults() {
-    return searchResultsVar;
+    return searchResults;
   }
 }
 
@@ -29,7 +29,7 @@ const store = new SearchResultsStore();
 dispatcher.register((action: any) => {
   switch (action.actionTypes) {
     case actionTypes.GET_SEARCH_RESULTS:
-      searchResultsVar = action.payload;
+      searchResults = action.searchResults;
       store.emitChange();
       break;
     default:
