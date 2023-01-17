@@ -9,6 +9,19 @@ section.search-results .content {
   width: var(--md-screen);
 }
 
+section.search-results .content .filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section.search-results .content .filter-bar .filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--grey);
+}
+
 section.search-results .content hr {
   border: 1px solid var(--light-grey);
 }
