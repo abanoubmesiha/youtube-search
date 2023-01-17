@@ -28,6 +28,8 @@ export type SearchResultItem = {
 }
 
 export type SearchResult = {
-    items: SearchResultItem[],
-    pageInfo?: {totalResults: number, resultsPerPage: number}
+    items?: SearchResultItem[],
+    pageInfo?: {totalResults: number, resultsPerPage: number},
+    loading?: boolean,
+    error?: { code: number, message: string }
 }
