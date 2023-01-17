@@ -3,7 +3,7 @@ import dispatcher from '../actions/appDispatcher';
 import actionTypes from '../actions/actionTypes';
 
 const CHANGE_EVENT = 'change';
-let searchResultsVar: any[] = [1];
+let searchResultsVar: any[] = [];
 
 class SearchResultsStore extends EventEmitter {
   addChangeListener(callback: any) {
@@ -29,7 +29,7 @@ const store = new SearchResultsStore();
 dispatcher.register((action: any) => {
   switch (action.actionTypes) {
     case actionTypes.GET_SEARCH_RESULTS:
-      searchResultsVar = action.posts;
+      searchResultsVar = action.payload;
       store.emitChange();
       break;
     default:
