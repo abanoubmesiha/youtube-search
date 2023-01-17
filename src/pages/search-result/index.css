@@ -25,3 +25,18 @@ section.search-results .content .filter-bar .filter-btn {
 section.search-results .content hr {
   border: 1px solid var(--light-grey);
 }
+
+section.search-results .content .filter-options {
+  display: flex;
+  font-size: var(--md-font);
+}
+
+section.search-results .content .filter-options .option {
+  margin-right: calc(var(--lg-margin) * 5);
+}
+
+section.search-results .content .filter-options .option .value {
+  color: var(--grey);
+  margin-bottom: var(--sm-margin);
+  cursor: pointer;
+}
