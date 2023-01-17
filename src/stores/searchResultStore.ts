@@ -1,11 +1,12 @@
 import { EventEmitter } from 'events';
 import dispatcher from '../actions/appDispatcher';
 import actionTypes from '../actions/actionTypes';
+import { SearchResult } from '../types/search';
 
 const CHANGE_EVENT = 'change';
-let searchResults: any[] = [];
+let searchResult: SearchResult = { items: [] };
 
-class SearchResultsStore extends EventEmitter {
+class SearchResultStore extends EventEmitter {
   addChangeListener(callback: any) {
     this.on(CHANGE_EVENT, callback);
   }
@@ -19,17 +20,17 @@ class SearchResultsStore extends EventEmitter {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  getSearchResults() {
-    return searchResults;
+  getSearchResult() {
+    return searchResult;
   }
 }
 
-const store = new SearchResultsStore();
+const store = new SearchResultStore();
 
 dispatcher.register((action: any) => {
   switch (action.actionTypes) {
-    case actionTypes.GET_SEARCH_RESULTS:
-      searchResults = action.searchResults;
+    case actionTypes.GET_SEARCH_RESULT:
+      searchResult = action.searchResult;
       store.emitChange();
       break;
     default:

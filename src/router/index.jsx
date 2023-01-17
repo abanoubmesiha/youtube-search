@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ScrollToTop from './scroll-to-top';
 import NotFound from './not-found';
 import Layout from '../layout';
-import SearchResults from '../pages/search-results';
+import SearchResult from '../pages/search-result';
 
 function MainRouter() {
   return (
@@ -11,7 +11,7 @@ function MainRouter() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/search" element={<SearchResults />} />
+          <Route path="/search" element={<SearchResult />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

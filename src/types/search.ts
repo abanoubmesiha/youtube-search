@@ -26,3 +26,8 @@ export type SearchResultItem = {
         title: string,
     }
 }
+
+export type SearchResult = {
+    items: SearchResultItem[],
+    pageInfo?: {totalResults: number, resultsPerPage: number}
+}
