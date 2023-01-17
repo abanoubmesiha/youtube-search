@@ -3,6 +3,7 @@ header {
   padding: var(--lg-padding) var(--sm-padding) var(--lg-padding) var(--sm-padding);
   display: flex;
   justify-content: center;
+  box-shadow: 0 1px 1px 1px var(--light-grey);
 }
 
 header .content {
