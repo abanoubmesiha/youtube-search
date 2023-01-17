@@ -36,7 +36,7 @@ function SearchResult() {
           </span>
         </div>
         <hr />
-        <div className="filter-options">
+        <div className="web-filter-options">
           <span className="option">
             <p className="type">TYPE</p>
             <hr />
@@ -53,6 +53,21 @@ function SearchResult() {
             <p className="value">This month</p>
             <p className="value">This year</p>
           </span>
+        </div>
+        <hr />
+        <div className="mobile-filter-options">
+          <select>
+            <option value="All">All</option>
+            <option value="Channel">Channel</option>
+            <option value="Playlist">Playlist</option>
+          </select>
+          <select>
+            <option value="Anytime">Anytime</option>
+            <option value="Today">Today</option>
+            <option value="This week">This week</option>
+            <option value="This month">This month</option>
+            <option value="This year">This year</option>
+          </select>
         </div>
         <hr />
         {
