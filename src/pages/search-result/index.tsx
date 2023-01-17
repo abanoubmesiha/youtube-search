@@ -20,11 +20,17 @@ function SearchResult() {
 
   return (
     <section className="search-results">
-      <div className="filter-bar">
-        <h4>hi</h4>
-      </div>
-      <br />
       <div className="content">
+        <div className="filter-bar">
+          <p>
+            About
+            {' '}
+            {searchResult.pageInfo?.totalResults}
+            {' '}
+            filtered results
+          </p>
+        </div>
+        <hr />
         {
           searchResult.items.map(
             (item: SearchResultItem) => <VideoCard key={item.id.videoId} item={item} />,

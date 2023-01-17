@@ -8,3 +8,7 @@ section.search-results {
 section.search-results .content {
   width: var(--md-screen);
 }
+
+section.search-results .content hr {
+  border: 1px solid var(--light-grey);
+}
