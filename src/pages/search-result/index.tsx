@@ -5,6 +5,7 @@ import getSearchResult from '../../actions/searchResultActions';
 import { SearchResultItem } from '../../types/search';
 import VideoCard from '../../reusable/video-card';
 import './index.css';
+import Loader from '../../reusable/loader';
 
 function SearchResult() {
   const [searchResult, setSearchResult] = useState(searchResultStore.getSearchResult());
@@ -20,6 +21,13 @@ function SearchResult() {
     return () => searchResultStore.removeChangeListener(onChange);
   }, []);
 
+  if (true) {
+    return (
+      <section className="search-results loading">
+        <Loader />
+      </section>
+    );
+  }
   return (
     <section className="search-results">
       <div className="content">
