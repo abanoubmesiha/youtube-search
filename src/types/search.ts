@@ -6,22 +6,22 @@ export type SearchParams = {
 } & URLSearchParams
 
 export type Image = {
-    height: number
+    height?: number
     url: string,
-    width: number,
+    width?: number,
 }
 
 export type SearchResultItem = {
-    id: {kind: string, videoId: string},
+    id?: {kind: string, videoId: string},
     snippet: {
         channelTitle: string,
         description: string,
-        publishedAt: string,
-        publishTime: string,
+        publishedAt?: string,
+        publishTime?: string,
         thumbnails: {
-            default: Image,
+            default?: Image,
             high: Image,
-            medium: Image,
+            medium?: Image,
         }
         title: string,
     }

@@ -18,6 +18,8 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
+Every component has its test besides it with the `.test.` naming convention.
+
 **Note: Runs typescript linter at first to make sure no errors are found**
 
 Launches the test runner in the interactive watch mode.\
