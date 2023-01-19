@@ -1,5 +1,5 @@
-import dispatcher from './appDispatcher';
-import actionTypes from './actionTypes';
+import dispatcher from './app-dispatcher';
+import actionTypes from './action-types';
 import api from '../apis';
 import { SearchResult } from '../types/search';
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BiFilter } from 'react-icons/bi';
-import searchResultStore from '../../stores/searchResultStore';
+import searchResultStore from '../../stores/search-result-store';
 import { SearchResultItem } from '../../types/search';
 import VideoCard from '../../reusable/video-card';
 import './index.css';

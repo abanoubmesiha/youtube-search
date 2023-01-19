@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import getSearchResult from '../../actions/searchResultActions';
-import searchResultStore from '../../stores/searchResultStore';
+import getSearchResult from '../../actions/search-result-actions';
+import searchResultStore from '../../stores/search-result-store';
 import './index.css';
 
 export default function Header() {

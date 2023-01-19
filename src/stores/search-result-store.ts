@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
-import dispatcher from '../actions/appDispatcher';
-import actionTypes from '../actions/actionTypes';
+import dispatcher from '../actions/app-dispatcher';
+import actionTypes from '../actions/action-types';
 import { SearchResult } from '../types/search';
 
 const CHANGE_EVENT = 'change';

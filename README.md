@@ -49,6 +49,36 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Runs the linter of the styles in the whole app.
 
+## Styles
+
+### StyleSheets File Structure
+
+* `assets/styles/` directory has the general styles and variables use in the whole app.
+
+Folder/File  | Contents
+------------- | -------------
+variables  | All variables use in the whole app.
+`general.css` | General styles, mainly the ones related to popular HTML elements like `body` and headings, ...etc.
+`index.css`  | All `assets/styles` files are imported to this file, which is imported in the `app.tsx`.
+
+* `any-component/**.css` has the styles related to the `any-component`.
+## React ( TSX )
+
+### React File Structure
+1. All folders and file should have filenames in kebab-case
+1. Any folder should have an `index.tsx` file which is the main file of that folder.
+
+Folder  | Contents
+------------- | -------------
+actions  | actions which will be dispatched to update the store.
+apis | Axios Singleton Class and API related data
+assets | styles and images of the app.
+layout  | header, footer, and any side menus which shared between pages.
+pages  | Main pages of the app
+reusable  | Reusable components used in pages
+router | React-Router related components
+stores | different stores saving data used in the components.
+types | all typescript types, interfaces, emuns and more used in our components or files
 
 ## Learn More
 
