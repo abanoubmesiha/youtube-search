@@ -1,8 +1,8 @@
 export type SearchParams = {
-    part: string,
-    maxResults: number,
+    part?: string,
+    maxResults?: number,
     key?: string,
-    q: string
+    q?: string
 }
 
 export type Image = {
@@ -28,6 +28,8 @@ export type SearchResultItem = {
 }
 
 export type SearchResult = {
-    items: SearchResultItem[],
-    pageInfo?: {totalResults: number, resultsPerPage: number}
+    items?: SearchResultItem[],
+    pageInfo?: {totalResults: number, resultsPerPage: number},
+    loading?: boolean,
+    error?: { code: number, message: string }
 }

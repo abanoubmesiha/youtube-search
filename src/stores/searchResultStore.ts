@@ -4,7 +4,7 @@ import actionTypes from '../actions/actionTypes';
 import { SearchResult } from '../types/search';
 
 const CHANGE_EVENT = 'change';
-let searchResult: SearchResult = { items: [] };
+let searchResult: SearchResult = { items: [], loading: true };
 
 class SearchResultStore extends EventEmitter {
   addChangeListener(callback: any) {
@@ -29,6 +29,10 @@ const store = new SearchResultStore();
 
 dispatcher.register((action: any) => {
   switch (action.actionTypes) {
+    case actionTypes.SET_LOADING:
+      searchResult = { ...searchResult, loading: action.loading };
+      store.emitChange();
+      break;
     case actionTypes.GET_SEARCH_RESULT:
       searchResult = action.searchResult;
       store.emitChange();

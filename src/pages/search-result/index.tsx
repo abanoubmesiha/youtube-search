@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BiFilter } from 'react-icons/bi';
 import searchResultStore from '../../stores/searchResultStore';
-import getSearchResult from '../../actions/searchResultActions';
 import { SearchResultItem } from '../../types/search';
 import VideoCard from '../../reusable/video-card';
 import './index.css';
+import Loader from '../../reusable/loader';
 
 function SearchResult() {
   const [searchResult, setSearchResult] = useState(searchResultStore.getSearchResult());
@@ -16,10 +16,23 @@ function SearchResult() {
 
   useEffect(() => {
     searchResultStore.addChangeListener(onChange);
-    if (searchResultStore.getSearchResult()?.items.length === 0) getSearchResult('spongebob');
     return () => searchResultStore.removeChangeListener(onChange);
   }, []);
 
+  if (searchResult.loading) {
+    return (
+      <section className="search-results loading">
+        <Loader />
+      </section>
+    );
+  }
+  if (searchResult?.error?.code) {
+    return (
+      <section className="search-results">
+        {searchResult.error.message}
+      </section>
+    );
+  }
   return (
     <section className="search-results">
       <div className="content">
@@ -76,7 +89,7 @@ function SearchResult() {
         </div>
         <hr />
         {
-          searchResult.items.map(
+          searchResult?.items?.map(
             (item: SearchResultItem) => <VideoCard key={item.id.videoId} item={item} />,
           )
         }
