@@ -1,5 +1,6 @@
 header {
   position: fixed;
+  top: 0;
   width: calc(100% - (var(--sm-padding) * 2));
   padding: var(--lg-padding) var(--sm-padding) var(--lg-padding) var(--sm-padding);
   display: flex;

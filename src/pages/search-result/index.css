@@ -38,10 +38,12 @@ section.search-results .content .web-filter-options {
   font-size: var(--md-font);
   transition: all 1s;
   height: 120px;
+  opacity: 1;
 }
 
 section.search-results .content .web-filter-options.hide {
   height: 0;
+  opacity: 0;
 }
 
 section.search-results .content .web-filter-options + hr {
