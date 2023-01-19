@@ -33,10 +33,10 @@ function SearchResult() {
     const lastYearNum = now.getFullYear() - 1;
     const lastYear = new Date(now.setFullYear(lastYearNum));
     return {
-      today: today.toJSON(),
-      lastWeek: lastWeek.toJSON(),
-      lastMonth: lastMonth.toJSON(),
-      lastYear: lastYear.toJSON(),
+      today: today.toISOString(),
+      lastWeek: lastWeek.toISOString(),
+      lastMonth: lastMonth.toISOString(),
+      lastYear: lastYear.toISOString(),
     };
   }, []);
 
