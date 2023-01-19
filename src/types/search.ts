@@ -3,7 +3,7 @@ export type SearchParams = {
     maxResults?: number,
     key?: string,
     q?: string
-}
+} & URLSearchParams
 
 export type Image = {
     height: number
