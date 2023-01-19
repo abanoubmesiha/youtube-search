@@ -89,28 +89,28 @@ function SearchResult() {
             <hr />
             <button
               type="button"
-              className="value"
+              className={`value ${searchParams.get('type') === 'all' ? 'selected' : ''}`}
               onClick={() => filterBy('type', 'all')}
             >
               All
             </button>
             <button
               type="button"
-              className="value"
+              className={`value ${searchParams.get('type') === 'channel' ? 'selected' : ''}`}
               onClick={() => filterBy('type', 'channel')}
             >
               Channel
             </button>
             <button
               type="button"
-              className="value"
+              className={`value ${searchParams.get('type') === 'playlist' ? 'selected' : ''}`}
               onClick={() => filterBy('type', 'playlist')}
             >
               Playlist
             </button>
             <button
               type="button"
-              className="value"
+              className={`value ${searchParams.get('type') === 'video' ? 'selected' : ''}`}
               onClick={() => filterBy('type', 'video')}
             >
               Video
@@ -158,18 +158,26 @@ function SearchResult() {
         </div>
         <hr />
         <div className="mobile-filter-options">
-          <select>
-            <option value="All">All</option>
+          <select
+            name="type"
+            onChange={(e) => filterBy(e.target.name, e.target.value)}
+            value={searchParams.get('type') ?? undefined}
+          >
+            <option value="all">All</option>
             <option value="channel">Channel</option>
             <option value="playlist">Playlist</option>
             <option value="video">Video</option>
           </select>
-          <select>
+          <select
+            name="publishedAfter"
+            onChange={(e) => filterBy(e.target.name, e.target.value)}
+            value={searchParams.get('publishedAfter') ?? undefined}
+          >
             <option value="Anytime">Anytime</option>
-            <option value="Today">Today</option>
-            <option value="This week">This week</option>
-            <option value="This month">This month</option>
-            <option value="This year">This year</option>
+            <option value={dates.today}>Today</option>
+            <option value={dates.lastWeek}>This week</option>
+            <option value={dates.lastMonth}>This month</option>
+            <option value={dates.lastYear}>This year</option>
           </select>
         </div>
         <hr />

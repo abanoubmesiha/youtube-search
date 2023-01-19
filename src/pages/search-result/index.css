@@ -69,6 +69,10 @@ section.search-results .content .web-filter-options .option .value {
   cursor: pointer;
 }
 
+section.search-results .content .web-filter-options .option .value.selected {
+  color: var(--black);
+}
+
 section.search-results .content .mobile-filter-options {
   display: none;
 }
