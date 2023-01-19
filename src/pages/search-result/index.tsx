@@ -24,6 +24,7 @@ function SearchResult() {
 
   const filterBy = (name: string, value: string) => {
     const currentParams = searchParams;
+    currentParams.delete(name);
     currentParams.append(name, value);
     setSearchParams(currentParams);
     getSearchResult(currentParams);
