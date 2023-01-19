@@ -1,9 +1,11 @@
 header {
+  position: fixed;
   width: calc(100% - (var(--sm-padding) * 2));
   padding: var(--lg-padding) var(--sm-padding) var(--lg-padding) var(--sm-padding);
   display: flex;
   justify-content: center;
   box-shadow: 0 1px 1px 1px var(--light-grey);
+  background-color: white;
 }
 
 header .content {
@@ -68,6 +70,7 @@ header .content form button.search svg {
 
 @media (max-width: 720px) {
   header {
+    position: static;
     background-color: var(--red);
   }
 

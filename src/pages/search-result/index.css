@@ -1,6 +1,6 @@
 section.search-results {
   width: calc(100% - (var(--sm-padding) * 2));
-  padding: var(--lg-padding) var(--sm-padding) var(--lg-padding) var(--sm-padding);
+  padding: calc(var(--lg-padding) + 60px) var(--sm-padding) var(--lg-padding) var(--sm-padding);
   display: flex;
   justify-content: center;
 }
@@ -74,6 +74,10 @@ section.search-results .content .mobile-filter-options select {
 }
 
 @media (max-width: 720px) {
+  section.search-results {
+    padding: var(--lg-padding) var(--sm-padding) var(--lg-padding) var(--sm-padding);
+  }
+
   section.search-results .content .filter-bar {
     display: none;
   }
