@@ -25,7 +25,8 @@ function SearchResult() {
         <Loader />
       </section>
     );
-  } if (searchResult?.error?.code) {
+  }
+  if (searchResult?.error?.code) {
     return (
       <section className="search-results">
         {searchResult.error.message}

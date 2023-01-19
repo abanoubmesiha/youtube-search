@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import getSearchResult from '../../actions/searchResultActions';
 import searchResultStore from '../../stores/searchResultStore';
 import './index.css';
 
 export default function Header() {
-  const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [searchValue, setSearchValue] = useState(searchParams.get('query') ?? '');
 
   useEffect(() => {
-    if (searchResultStore.getSearchResult()?.items?.length === 0) getSearchResult(searchValue);
+    if (searchResultStore.getSearchResult()?.items?.length === 0) getSearchResult(searchParams.get('query') ?? '');
   }, []);
 
   return (
@@ -38,11 +41,13 @@ export default function Header() {
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
+            type="text"
             className="search"
+            value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            onKeyDown={((e) => { if (e.code === 'Enter') { getSearchResult(searchValue); } })}
+            onKeyDown={((e) => { if (e.code === 'Enter' || e.code === 'NumpadEnter') { navigate(`/search?query=${searchValue}`); getSearchResult(searchValue); } })}
           />
-          <button type="button" className="search" onClick={() => getSearchResult(searchValue)}>
+          <button type="button" className="search" onClick={() => { navigate(`/search?query=${searchValue}`); getSearchResult(searchValue); }}>
             <AiOutlineSearch size={20} />
           </button>
         </form>
