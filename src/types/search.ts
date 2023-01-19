@@ -12,7 +12,7 @@ export type Image = {
 }
 
 export type SearchResultItem = {
-    id?: {kind: string, videoId: string},
+    id: {kind?: string, videoId: string},
     snippet: {
         channelTitle: string,
         description: string,

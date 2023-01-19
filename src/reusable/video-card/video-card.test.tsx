@@ -5,6 +5,7 @@ import VideoCard from '.';
 import { SearchResultItem } from '../../types/search';
 
 const item: SearchResultItem = {
+  id: { videoId: '1' },
   snippet: {
     channelTitle: 'channelTitle',
     description: 'description',
