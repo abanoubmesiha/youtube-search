@@ -37,7 +37,7 @@ section.search-results .content .web-filter-options {
   display: flex;
   font-size: var(--md-font);
   transition: all 1s;
-  height: 120px;
+  height: 125px;
   opacity: 1;
 }
 
@@ -60,6 +60,10 @@ section.search-results .content .web-filter-options .option {
 }
 
 section.search-results .content .web-filter-options .option .value {
+  display: block;
+  background: transparent;
+  border: 0;
+  padding: 0;
   color: var(--grey);
   margin-bottom: var(--sm-margin);
   cursor: pointer;
