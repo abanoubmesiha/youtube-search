@@ -8,11 +8,18 @@ import './index.css';
 export default function Header() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [searchValue, setSearchValue] = useState(searchParams.get('query') ?? '');
+  const [searchValue, setSearchValue] = useState(searchParams.get('q') ?? '');
 
   useEffect(() => {
-    if (searchResultStore.getSearchResult()?.items?.length === 0) getSearchResult(searchParams.get('query') ?? '');
+    if (searchResultStore.getSearchResult()?.items?.length === 0) getSearchResult(searchParams);
   }, []);
+
+  const search = (q: string) => {
+    const currentParams = searchParams;
+    currentParams.append('q', q);
+    navigate(`/search?${currentParams.toString()}`);
+    getSearchResult(currentParams);
+  };
 
   return (
     <header>
@@ -45,9 +52,9 @@ export default function Header() {
             className="search"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            onKeyDown={((e) => { if (e.code === 'Enter' || e.code === 'NumpadEnter') { navigate(`/search?query=${searchValue}`); getSearchResult(searchValue); } })}
+            onKeyDown={((e) => { if (e.code === 'Enter' || e.code === 'NumpadEnter') search(searchValue); })}
           />
-          <button type="button" className="search" onClick={() => { navigate(`/search?query=${searchValue}`); getSearchResult(searchValue); }}>
+          <button type="button" className="search" onClick={() => search(searchValue)}>
             <AiOutlineSearch size={20} />
           </button>
         </form>
