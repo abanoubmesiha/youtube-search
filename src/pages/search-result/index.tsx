@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { BiFilter } from 'react-icons/bi';
 import searchResultStore from '../../stores/search-result-store';
 import { SearchResultItem } from '../../types/search';
 import VideoCard from '../../reusable/video-card';
-import './index.css';
 import Loader from '../../reusable/loader';
+import getSearchResult from '../../actions/search-result-actions';
+import './index.css';
 
 function SearchResult() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [searchResult, setSearchResult] = useState(searchResultStore.getSearchResult());
   const [isWebFiltersOpen, setIsWebFiltersOpen] = useState(false);
 
@@ -18,6 +21,13 @@ function SearchResult() {
     searchResultStore.addChangeListener(onChange);
     return () => searchResultStore.removeChangeListener(onChange);
   }, []);
+
+  const filterBy = (name: string, value: string) => {
+    const currentParams = searchParams;
+    currentParams.append(name, value);
+    setSearchParams(currentParams);
+    getSearchResult(currentParams);
+  };
 
   if (searchResult.loading) {
     return (
@@ -58,26 +68,82 @@ function SearchResult() {
           <span className="option">
             <p className="type">TYPE</p>
             <hr />
-            <p className="value">All</p>
-            <p className="value">Channel</p>
-            <p className="value">Playlist</p>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('type', 'all')}
+            >
+              All
+            </button>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('type', 'channel')}
+            >
+              Channel
+            </button>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('type', 'playlist')}
+            >
+              Playlist
+            </button>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('type', 'video')}
+            >
+              Video
+            </button>
           </span>
           <span className="option">
             <p className="type">UPLOAD DATE</p>
             <hr />
-            <p className="value">Anytime</p>
-            <p className="value">Today</p>
-            <p className="value">This week</p>
-            <p className="value">This month</p>
-            <p className="value">This year</p>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('publishedBefore', '')}
+            >
+              Anytime
+            </button>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('publishedBefore', 'date before Today')}
+            >
+              Today
+            </button>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('publishedBefore', 'date before week')}
+            >
+              This week
+            </button>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('publishedBefore', 'date before month')}
+            >
+              This month
+            </button>
+            <button
+              type="button"
+              className="value"
+              onClick={() => filterBy('publishedBefore', 'date before year')}
+            >
+              This year
+            </button>
           </span>
         </div>
         <hr />
         <div className="mobile-filter-options">
           <select>
             <option value="All">All</option>
-            <option value="Channel">Channel</option>
-            <option value="Playlist">Playlist</option>
+            <option value="channel">Channel</option>
+            <option value="playlist">Playlist</option>
+            <option value="video">Video</option>
           </select>
           <select>
             <option value="Anytime">Anytime</option>
