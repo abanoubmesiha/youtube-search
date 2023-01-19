@@ -16,9 +16,9 @@ export default function Header() {
 
   const search = (q: string) => {
     const currentParams = searchParams;
+    currentParams.delete('q');
     currentParams.append('q', q);
     navigate(`/search?${currentParams.toString()}`);
-    getSearchResult(currentParams);
   };
 
   return (

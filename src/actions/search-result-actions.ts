@@ -4,6 +4,8 @@ import api from '../apis';
 import { SearchParams, SearchResult } from '../types/search';
 
 export default async function getSearchResult(searchParams: SearchParams) {
+  searchParams.delete('part');
+  searchParams.delete('maxResults');
   searchParams.append('part', 'snippet');
   searchParams.append('maxResults', '5');
   dispatcher.dispatch({

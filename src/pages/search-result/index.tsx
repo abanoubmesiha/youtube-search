@@ -110,8 +110,8 @@ function SearchResult() {
             <hr />
             <button
               type="button"
-              className={`value ${searchParams.get('type') === 'all' ? 'selected' : ''}`}
-              onClick={() => filterBy('type', 'all')}
+              className={`value ${searchParams.get('type') === '' || searchParams.get('type') === null ? 'selected' : ''}`}
+              onClick={() => filterBy('type', '')}
             >
               All
             </button>
@@ -184,7 +184,7 @@ function SearchResult() {
             onChange={(e) => filterBy(e.target.name, e.target.value)}
             value={searchParams.get('type') ?? undefined}
           >
-            <option value="all">All</option>
+            <option value="">All</option>
             <option value="channel">Channel</option>
             <option value="playlist">Playlist</option>
             <option value="video">Video</option>
@@ -194,7 +194,7 @@ function SearchResult() {
             onChange={(e) => filterBy(e.target.name, e.target.value)}
             value={dateOption ?? undefined}
           >
-            <option value="Anytime">Anytime</option>
+            <option value="">Anytime</option>
             <option value={dates.today}>Today</option>
             <option value={dates.lastWeek}>This week</option>
             <option value={dates.lastMonth}>This month</option>
