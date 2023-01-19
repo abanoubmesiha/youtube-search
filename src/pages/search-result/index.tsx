@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, {
+  useState, useEffect, useMemo, useCallback,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BiFilter } from 'react-icons/bi';
 import searchResultStore from '../../stores/search-result-store';
@@ -18,14 +20,17 @@ function SearchResult() {
   }
 
   const dates = useMemo(() => {
-    const now = new Date();
+    let now = new Date();
     const yesterday = now.getDate() - 1;
     const today = new Date(now.setDate(yesterday));
+    now = new Date();
     const lastWeekDay = now.getDate() - 6;
     const lastWeek = new Date(now.setDate(lastWeekDay));
-    const lastMonthNum = today.getMonth() - 1;
+    now = new Date();
+    const lastMonthNum = now.getMonth() - 1;
     const lastMonth = new Date(now.setMonth(lastMonthNum));
-    const lastYearNum = today.getFullYear() - 1;
+    now = new Date();
+    const lastYearNum = now.getFullYear() - 1;
     const lastYear = new Date(now.setFullYear(lastYearNum));
     return {
       today: today.toJSON(),
@@ -34,6 +39,20 @@ function SearchResult() {
       lastYear: lastYear.toJSON(),
     };
   }, []);
+
+  const closestDate = useCallback((date: string | null) => {
+    if (!date) return null;
+    if (date < dates.today && date < dates.lastWeek && date < dates.lastMonth) {
+      return dates.lastYear;
+    }
+    if (date < dates.today && date < dates.lastWeek) {
+      return dates.lastMonth;
+    }
+    if (date < dates.today) {
+      return dates.lastWeek;
+    }
+    return dates.today;
+  }, [dates.today, dates.lastWeek, dates.lastMonth, dates.lastYear]);
 
   useEffect(() => {
     searchResultStore.addChangeListener(onChange);
@@ -47,6 +66,8 @@ function SearchResult() {
     setSearchParams(currentParams);
     getSearchResult(currentParams);
   };
+
+  const dateOption = closestDate(searchParams.get('publishedAfter'));
 
   if (searchResult.loading) {
     return (
@@ -121,35 +142,35 @@ function SearchResult() {
             <hr />
             <button
               type="button"
-              className="value"
+              className={`value ${dateOption === null || dateOption === undefined ? 'selected' : ''}`}
               onClick={() => filterBy('publishedAfter', '')}
             >
               Anytime
             </button>
             <button
               type="button"
-              className="value"
+              className={`value ${dateOption === dates.today ? 'selected' : ''}`}
               onClick={() => filterBy('publishedAfter', dates.today)}
             >
               Today
             </button>
             <button
               type="button"
-              className="value"
+              className={`value ${dateOption === dates.lastWeek ? 'selected' : ''}`}
               onClick={() => filterBy('publishedAfter', dates.lastWeek)}
             >
               This week
             </button>
             <button
               type="button"
-              className="value"
+              className={`value ${dateOption === dates.lastMonth ? 'selected' : ''}`}
               onClick={() => filterBy('publishedAfter', dates.lastMonth)}
             >
               This month
             </button>
             <button
               type="button"
-              className="value"
+              className={`value ${dateOption === dates.lastYear ? 'selected' : ''}`}
               onClick={() => filterBy('publishedAfter', dates.lastYear)}
             >
               This year
