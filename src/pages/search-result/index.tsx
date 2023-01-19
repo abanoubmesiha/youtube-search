@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BiFilter } from 'react-icons/bi';
 import searchResultStore from '../../stores/search-result-store';
@@ -16,6 +16,24 @@ function SearchResult() {
   function onChange() {
     setSearchResult(searchResultStore.getSearchResult());
   }
+
+  const dates = useMemo(() => {
+    const now = new Date();
+    const yesterday = now.getDate() - 1;
+    const today = new Date(now.setDate(yesterday));
+    const lastWeekDay = now.getDate() - 6;
+    const lastWeek = new Date(now.setDate(lastWeekDay));
+    const lastMonthNum = today.getMonth() - 1;
+    const lastMonth = new Date(now.setMonth(lastMonthNum));
+    const lastYearNum = today.getFullYear() - 1;
+    const lastYear = new Date(now.setFullYear(lastYearNum));
+    return {
+      today: today.toJSON(),
+      lastWeek: lastWeek.toJSON(),
+      lastMonth: lastMonth.toJSON(),
+      lastYear: lastYear.toJSON(),
+    };
+  }, []);
 
   useEffect(() => {
     searchResultStore.addChangeListener(onChange);
@@ -104,35 +122,35 @@ function SearchResult() {
             <button
               type="button"
               className="value"
-              onClick={() => filterBy('publishedBefore', '')}
+              onClick={() => filterBy('publishedAfter', '')}
             >
               Anytime
             </button>
             <button
               type="button"
               className="value"
-              onClick={() => filterBy('publishedBefore', 'date before Today')}
+              onClick={() => filterBy('publishedAfter', dates.today)}
             >
               Today
             </button>
             <button
               type="button"
               className="value"
-              onClick={() => filterBy('publishedBefore', 'date before week')}
+              onClick={() => filterBy('publishedAfter', dates.lastWeek)}
             >
               This week
             </button>
             <button
               type="button"
               className="value"
-              onClick={() => filterBy('publishedBefore', 'date before month')}
+              onClick={() => filterBy('publishedAfter', dates.lastMonth)}
             >
               This month
             </button>
             <button
               type="button"
               className="value"
-              onClick={() => filterBy('publishedBefore', 'date before year')}
+              onClick={() => filterBy('publishedAfter', dates.lastYear)}
             >
               This year
             </button>
