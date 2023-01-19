@@ -192,7 +192,7 @@ function SearchResult() {
           <select
             name="publishedAfter"
             onChange={(e) => filterBy(e.target.name, e.target.value)}
-            value={searchParams.get('publishedAfter') ?? undefined}
+            value={dateOption ?? undefined}
           >
             <option value="Anytime">Anytime</option>
             <option value={dates.today}>Today</option>
