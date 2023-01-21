@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { createFilterDates, findClosestDate } from '../../pages/search-result/helpers';
 import { SearchResultItem } from '../../types/search';
 import './index.css';
 
@@ -16,9 +17,13 @@ function SearchResultItemCard(props: Props) {
           },
         },
         title,
+        publishedAt,
       },
     },
   } = props;
+
+  const dates = useMemo(() => createFilterDates(), []);
+  const since = useMemo(() => findClosestDate(publishedAt ?? null, dates).name, [dates.today]);
 
   return (
     <div className="search-result-item-card">
@@ -29,7 +34,7 @@ function SearchResultItemCard(props: Props) {
         <div className="seperator" />
         <span className="views">54M views</span>
         <div className="seperator" />
-        <span className="since">1 year ago</span>
+        <span className="since">{since}</span>
         <p className="description">{description}</p>
       </div>
     </div>

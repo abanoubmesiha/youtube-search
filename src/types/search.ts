@@ -13,7 +13,7 @@ export type Image = {
 
 export type SearchResultItem = {
     id: {
-        kind?: string,
+        kind: string,
         videoId?: string,
         playlistId? : string,
         channelId?: string
@@ -37,4 +37,11 @@ export type SearchResult = {
     pageInfo?: {totalResults: number, resultsPerPage: number},
     loading?: boolean,
     error?: { code: number, message: string }
+}
+
+export type FilterDates = {
+    lastYear: string,
+    lastMonth: string,
+    lastWeek: string,
+    today: string
 }
