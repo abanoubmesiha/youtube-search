@@ -204,7 +204,12 @@ function SearchResult() {
         <hr />
         {
           searchResult?.items?.map(
-            (item: SearchResultItem) => <VideoCard key={item.id.videoId} item={item} />,
+            (item: SearchResultItem) => (
+              <VideoCard
+                key={item.id.videoId ?? item.id.channelId ?? item.id.playlistId}
+                item={item}
+              />
+            ),
           )
         }
       </div>
