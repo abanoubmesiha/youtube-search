@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { render } from '@testing-library/react';
-import VideoCard from '.';
+import SearchResultItemCard from '.';
 import { SearchResultItem } from '../../types/search';
 
 const item: SearchResultItem = {
@@ -20,7 +20,7 @@ const item: SearchResultItem = {
 
 describe('Video Card', () => {
   it('renders video details', () => {
-    const { container } = render(<VideoCard item={item} />);
+    const { container } = render(<SearchResultItemCard item={item} />);
     const title = container.getElementsByTagName('h4')[0];
     const img = container.getElementsByTagName('img')[0];
     const channelTitle = container.getElementsByClassName('channel-title')[0];

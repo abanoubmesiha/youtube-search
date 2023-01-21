@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { BiFilter } from 'react-icons/bi';
 import searchResultStore from '../../stores/search-result-store';
 import { SearchResultItem } from '../../types/search';
-import VideoCard from '../../reusable/video-card';
+import SearchResultItemCard from '../../reusable/search-result-item-card';
 import Loader from '../../reusable/loader';
 import getSearchResult from '../../actions/search-result-actions';
 import './index.css';
@@ -205,7 +205,7 @@ function SearchResult() {
         {
           searchResult?.items?.map(
             (item: SearchResultItem) => (
-              <VideoCard
+              <SearchResultItemCard
                 key={item.id.videoId ?? item.id.channelId ?? item.id.playlistId}
                 item={item}
               />

@@ -4,7 +4,7 @@ import './index.css';
 
 type Props = { item: SearchResultItem };
 
-function VideoCard(props: Props) {
+function SearchResultItemCard(props: Props) {
   const {
     item: {
       snippet: {
@@ -21,7 +21,7 @@ function VideoCard(props: Props) {
   } = props;
 
   return (
-    <div className="video-card">
+    <div className="search-result-item-card">
       <img src={url} alt="video-thumbnail" height={200} width={300} />
       <div className="details">
         <h4>{title}</h4>
@@ -36,4 +36,4 @@ function VideoCard(props: Props) {
   );
 }
 
-export default VideoCard;
+export default SearchResultItemCard;
